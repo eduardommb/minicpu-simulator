@@ -17,33 +17,38 @@ void fetch(uint8_t *op, uint8_t *a, uint8_t *b) {
 }
 
 void add(uint8_t a, uint8_t b){
-    //blablabla
+    reg[a] = reg[a] + reg[b];
 }
 
 void sub(uint8_t a, uint8_t b){
-    //blablabla
+    reg[a] = reg[a] - reg[b];
 }
 
 void mov(uint8_t a, uint8_t b){
-    //blablabla
+    reg[a] = b;
 }
 
 void cmp(uint8_t a, uint8_t b){
-    //blablabla
+    if(reg[a] == reg[b]){
+        zf = 1;
+    }
+    else{
+        zf = 0;
+    }
 }
 
 void decode_execute(uint8_t op, uint8_t a, uint8_t b) {
     if (op == 0x03){
-        //ADD
+        add(a, b);
     }
     else if (op == 0x04){
-        //SUB
+        sub(a, b);
     }
     else if( op == 0x05){
-        //MOV
+        mov(a, b);
     }
     else if(op == 0x06){
-        //CMP
+        cmp(a, b);
     }
 }
 
