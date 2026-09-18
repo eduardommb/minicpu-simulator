@@ -21,3 +21,5 @@ Atividade de Infraestrutura de Hardware feita em grupo (10 pessoas): simulador d
     </tr>
   </tbody>
 </table>
+
+![CPU-WARS](cpuwars.jpg)

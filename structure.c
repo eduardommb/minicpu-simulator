@@ -16,8 +16,35 @@ void fetch(uint8_t *op, uint8_t *a, uint8_t *b) {
     pc += 3;
 }
 
+void add(uint8_t a, uint8_t b){
+    //blablabla
+}
+
+void sub(uint8_t a, uint8_t b){
+    //blablabla
+}
+
+void mov(uint8_t a, uint8_t b){
+    //blablabla
+}
+
+void cmp(uint8_t a, uint8_t b){
+    //blablabla
+}
+
 void decode_execute(uint8_t op, uint8_t a, uint8_t b) {
-    //Código da dupla 2
+    if (op == 0x03){
+        //ADD
+    }
+    else if (op == 0x04){
+        //SUB
+    }
+    else if( op == 0x05){
+        //MOV
+    }
+    else if(op == 0x06){
+        //CMP
+    }
 }
 
 void trace(uint8_t op, uint8_t a, uint8_t b) {
