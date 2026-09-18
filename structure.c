@@ -37,8 +37,42 @@ void cmp(uint8_t a, uint8_t b){
     }
 }
 
+void load(uint8_t a, uint8_t b){
+    reg[a] = mem[b];
+}
+
+void store(uint8_t a, uint8_t b){
+    mem[b] = reg[a];
+}
+
+void jmp(uint8_t a){
+    pc = a;
+}
+
+void jz(uint8_t a){
+    if(zf){
+        pc = a;
+    }
+}
+
+void jnz(uint8_t a){
+    if(!zf){
+        pc = a;
+    }
+}
+
+void halt(void){
+    running = 0;
+}
+
 void decode_execute(uint8_t op, uint8_t a, uint8_t b) {
-    if (op == 0x03){
+    if (op == 0x01){
+        load(a, b);
+    }
+    else if (op == 0x02){
+        store(a, b);
+    }
+    else if (op == 0x03){
         add(a, b);
     }
     else if (op == 0x04){
@@ -49,6 +83,18 @@ void decode_execute(uint8_t op, uint8_t a, uint8_t b) {
     }
     else if(op == 0x06){
         cmp(a, b);
+    }
+    else if (op == 0x07){
+        jmp(a);
+    }
+    else if (op == 0x08){
+        jz(a);
+    }
+    else if (op == 0x09){
+        jnz(a);
+    }
+    else if (op == 0x0A){
+        halt();
     }
 }
 
@@ -88,7 +134,7 @@ int main() {
 
     mem[0x33] = 0x06; mem[0x34] = 0x01; mem[0x35] = 0x02;
     mem[0x36] = 0x08; mem[0x37] = 0x4E; mem[0x38] = 0x00;
-    mem[0x39] = 0x06; mem[0x40] = 0x00; mem[0x3B] = 0x02;
+    mem[0x39] = 0x06; mem[0x3A] = 0x00; mem[0x3B] = 0x02;
     mem[0x3C] = 0x08; mem[0x3D] = 0x48; mem[0x3E] = 0x00;
     mem[0x3F] = 0x04; mem[0x40] = 0x00; mem[0x41] = 0x03;
     mem[0x42] = 0x04; mem[0x43] = 0x01; mem[0x44] = 0x03;
