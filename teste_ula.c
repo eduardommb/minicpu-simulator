@@ -5,6 +5,37 @@
 uint8_t reg[4] = {0};
 uint8_t zf = 0;
 
+void add(uint8_t a, uint8_t b) {
+    reg[a] = reg[a] + reg[b];
+}
+
+void sub(uint8_t a, uint8_t b) {
+    reg[a] = reg[a] - reg[b];
+}
+
+void mov(uint8_t a, uint8_t b) {
+    reg[a] = reg[b];
+}
+
+void cmp(uint8_t a, uint8_t b) {
+    zf = reg[a] == reg[b];
+}
+
+void decode_execute(uint8_t op, uint8_t a, uint8_t b) {
+    if (op == 0x03) {
+        add(a, b);
+    }
+    else if (op == 0x04) {
+        sub(a, b);
+    }
+    else if (op == 0x05) {
+        mov(a, b);
+    }
+    else if (op == 0x06) {
+        cmp(a, b);
+    }
+}
+
 void testar_add(void) {
     reg[0] = 250;
     reg[1] = 10;

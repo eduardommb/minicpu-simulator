@@ -23,3 +23,41 @@ Atividade de Infraestrutura de Hardware feita em grupo (10 pessoas): simulador d
 </table>
 
 ![CPU-WARS](cpuwars.jpg)
+
+## Como compilar e executar
+
+O projeto usa `gcc` e `make`. No terminal, dentro desta pasta, execute:
+
+```bash
+make
+```
+
+Esse comando compila o simulador principal e os três testes. Os executáveis gerados são:
+
+- `minicpu`: simulador principal em `structure.c`;
+- `teste_estrutura_base_fetch`: teste do ciclo básico de busca;
+- `teste_memoria_fluxo`: testes de `LOAD`, `STORE`, saltos e `HALT`;
+- `teste_ula`: testes da ULA (`ADD`, `SUB`, `MOV` e `CMP`).
+
+Para executar o simulador principal:
+
+```bash
+make run
+```
+
+Para compilar e executar todos os testes:
+
+```bash
+make run-testes
+```
+
+Outros comandos úteis:
+
+```bash
+make principal  # compila apenas o simulador principal
+make testes     # compila apenas os testes
+make clean      # remove os executáveis gerados
+make help       # mostra os comandos disponíveis
+```
+
+No Windows, esses comandos funcionam em um terminal que tenha `make` e `gcc` no `PATH`, como o terminal do MinGW ou do W64Devkit.
